@@ -2,34 +2,37 @@
  * @author Javier G. Manzano
  * @description Core class to create and persist logs.
  * @date 13 January 2018
+ *
+ * //TODO: take into account the maximum size of the logs - if the user starts logging many things,
+ * //it might be convenient to create multiple log records. Or maybe devide logs by severity.
  */
-public class Logger {
+global class Logger {
     private Log__c log;
 
-    public Logger(String transactionName){
+    global Logger(String transactionName){
         log = getTodayLog();
         log.Message__c = '\n\n TRANSACTION ' + transactionName;
     }
 
-    public void persistLog(){
+    global void persistLog(){
         if(logsAreEnabled()){
             upsert log;
         }
     }
 
-    public void debug(String message){
+    global void debug(String message){
         log(message, LogType.DEBUG);
     }
 
-    public void info(String message){
+    global void info(String message){
         log(message, LogType.INFO);
     }
 
-    public void warning(String message){
+    global void warning(String message){
         log(message, LogType.WARNING);
     }
 
-    public void error(String message){
+    global void error(String message){
         log(message, LogType.ERROR);
     }
 
