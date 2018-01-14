@@ -1,5 +1,16 @@
+/**
+ * @author Javier G. Manzano
+ * @description Test class for Logger.cls
+ * @date 13 January 2018
+ */
 @IsTest
 private class LoggerTest {
+    @TestSetup
+    static void configureApexLogger(){
+        ApexLogger__c apxlog = new ApexLogger__c();
+        insert apxlog;
+    }
+
     @IsTest
     static void testErrorLogging() {
         Test.startTest();
@@ -77,5 +88,21 @@ private class LoggerTest {
         Test.stopTest();
 
         System.assert(exceptionThrown);
+    }
+
+    @IsTest
+    static void testDisabledLogs(){
+        ApexLogger__c apxlog = ApexLogger__c.getOrgDefaults();
+        apxlog.Enabled__c = false;
+        update apxlog;
+
+        Test.startTest();
+        Logger logger = new Logger('New Transaction');
+        logger.info('Testing info');
+        logger.persistLog();
+        Test.stopTest();
+
+        Log__c[] logs = [SELECT Id, Name, HasErrors__c, Message__c FROM Log__c];
+        System.assert(logs.isEmpty());
     }
 }

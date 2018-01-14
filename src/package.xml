@@ -8,17 +8,22 @@ Source: https://github.com/Manzanit0/ApexLogger</description>
     <namespacePrefix>apxlog</namespacePrefix>
     <types>
         <members>LogException</members>
+        <members>LogJanitor</members>
+        <members>LogJanitorTest</members>
         <members>LogType</members>
         <members>Logger</members>
         <members>LoggerTest</members>
         <name>ApexClass</name>
     </types>
     <types>
+        <members>ApexLogger__c.Enabled__c</members>
+        <members>ApexLogger__c.LogLifespan__c</members>
         <members>Log__c.HasErrors__c</members>
         <members>Log__c.Message__c</members>
         <name>CustomField</name>
     </types>
     <types>
+        <members>ApexLogger__c</members>
         <members>Log__c</members>
         <name>CustomObject</name>
     </types>

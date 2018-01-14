@@ -1,3 +1,8 @@
+/**
+ * @author Javier G. Manzano
+ * @description Core class to create and persist logs.
+ * @date 13 January 2018
+ */
 public class Logger {
     private Log__c log;
 
@@ -7,7 +12,9 @@ public class Logger {
     }
 
     public void persistLog(){
-        upsert log;
+        if(logsAreEnabled()){
+            upsert log;
+        }
     }
 
     public void debug(String message){
@@ -44,5 +51,9 @@ public class Logger {
         }
 
         return logs.isEmpty() ? new Log__c(Name = logName) : logs[0];
+    }
+
+    private Boolean logsAreEnabled(){
+        return ApexLogger__c.getOrgDefaults().Enabled__c;
     }
 }
