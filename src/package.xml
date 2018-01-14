@@ -28,12 +28,20 @@ Source: https://github.com/Manzanit0/ApexLogger</description>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>Log__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
         <members>Log__c-Log Layout</members>
         <name>Layout</name>
     </types>
     <types>
         <members>Log__c.All</members>
         <name>ListView</name>
+    </types>
+    <types>
+        <members>ApexLogger</members>
+        <name>PermissionSet</name>
     </types>
     <version>39.0</version>
 </Package>

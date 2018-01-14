@@ -9,6 +9,7 @@ You can install the package through the following link:
 * Specific object to save the logs to.
 * Possibility of specifing the lifespan of logs - A daily batch deletes older log records.
 * Enablement/Disablement of the logging through a custom setting.
+* Specific permission set to see the logs.
 * No-brainer API for the cozy developer :)
 
 ### Example
